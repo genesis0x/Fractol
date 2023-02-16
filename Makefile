@@ -6,28 +6,29 @@
 #    By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 11:14:53 by hahadiou          #+#    #+#              #
-#    Updated: 2023/01/21 18:52:39 by hahadiou         ###   ########.fr        #
+#    Updated: 2023/02/16 18:45:30 by hahadiou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= cc
+
 FLAGS	= -Wall -Wextra -Werror
 
-NAME	= fdf
+NAME	= fractol
 
 INC	= inc
+
 LIBFT_PATH	= libft
+
 SRC_PATH	= src
+
 OBJ_PATH	= obj
 
-SRCS = event_hooks.c \
-		init.c \
+SRCS =  init.c \
+		event_hooks.c \
 		main.c \
-		parse_map.c \
-		put_pixel.c \
-		transform_ref.c \
-		utils.c \
-		#draw.c
+		shape.c \
+		utils.c
 		
 SRC		= $(addprefix $(SRC_PATH)/,$(SRCS))
 OBJ		= $(addprefix $(OBJ_PATH)/,$(SRCS:.c=.o))
@@ -45,7 +46,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@echo "$(YELLOW)Compiling Libft...$(NOC)"
 	@make -sC $(LIBFT_PATH)
-	@echo "$(YELLOW)Compiling FDF...$(NOC)"
+	@echo "$(YELLOW)Compiling Fractol...$(NOC)"
 	@$(CC) $(FLAGS) -L $(LIBFT_PATH) -lmlx -framework OpenGL -framework AppKit -o $@ $^ -lft
 	@echo "$(GREEN)$@$(NOC)"
 
@@ -54,15 +55,15 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)/$(NAME).h
 	@$(CC) $(FLAGS) -I$(INC) -c -o $@ $<
 
 run :
-		make re && ./fdf
+		make re && ./fractol
 clean:
-	@echo "$(RED)Deleting FDF OBJS ✔️ $(NOC)"
+	@echo "$(RED)Deleting Fractol OBJS ✔️ $(NOC)"
 	@make clean -sC $(LIBFT_PATH)
 	@rm -rf $(OBJ_PATH)
 	@rm -rf $(OBJB_PATH)
 
 fclean: clean
-	@echo "$(RED)Deleting FDF Binary$(NOC)"
+	@echo "$(RED)Deleting Fractol Binary ✔️$(NOC)"
 	@make fclean -sC $(LIBFT_PATH)
 	@rm -f $(NAME) ${NAMEB}
 

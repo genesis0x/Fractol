@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/01/21 19:55:24 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/16 23:05:35 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
-# include "config.h"
 # include "libft.h"
-# include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
-# include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
+
+# define W 1200
+# define H 750
+# define TITLE "Fractol"
 
 # define K_ESC 53
 # define K_A 0
 # define K_S 1
 # define K_D 2
-
+# define MAX_ITER 256
 enum
 {
 	ON_KEYDOWN = 2,
@@ -42,22 +42,18 @@ typedef struct s_data		t_data;
 typedef struct s_main		t_main;
 typedef struct s_canvas		t_canvas;
 typedef struct s_point		t_point;
-typedef struct s_cam		t_cam;
-typedef struct s_map		t_map;
-typedef struct s_vectors	t_vectors;
+typedef struct s_complex	t_complex;
+
+struct						s_complex
+{
+	double					real;
+	double					imag;
+};
 
 struct						s_point
 {
 	double					x;
 	double					y;
-	double					z;
-};
-
-struct						s_vectors
-{
-	t_point					ex;
-	t_point					ey;
-	t_point					ez;
 };
 
 struct						s_canvas
@@ -72,57 +68,31 @@ struct						s_canvas
 	int						endian;
 };
 
-struct						s_map
-{
-	size_t					w;
-	size_t					h;
-	char					**coords;
-};
-
-struct						s_cam
-{
-	float					mu;
-	float					alpha;
-	float					d;
-	float					fx;
-	float					fy;
-	t_point					tr;
-	t_point					ro;
-	t_vectors				v;
-	t_point					**coords;
-};
-
 struct						s_main
 {
 	t_canvas				canvas;
 	int						x_pos;
 	void					(*draw_on_screen)(t_data *);
-	char					*map_path;
-	t_cam					cam;
-	t_map					map;
 };
 
 struct						s_data
 {
-	t_point					*p;
 	void					*mlx;
 	void					*win;
 	t_main					main;
+	double					ps; // pixel_size
+	double					zoom;
 };
 
-void						init(t_data *d, int ac, char **av);
-void						start_fdf(t_data *data);
+int							calculate(t_complex c, t_complex z, int max_iter);
+void						mandelbrot(t_data *data);
+void						julia(t_data *data);
+void						init(t_data *data);
+void						init_canvas(void *mlx, t_canvas *c);
+int							key_handler(int key, t_data *data);
+int							close_window(t_data *data);
+void						register_events(t_data *data);
 void						paint_pxl(t_canvas *canvas, int x, int y,
 								int color);
-void						register_events(t_data *data);
-t_map						parse_map(char *map_path);
-t_vectors					calculate_vectors(t_data *d);
-void						register_events(t_data *data);
-int							is_valid_map(char *map_path, t_map *map);
-void						build_map(char *map_path, t_map *map);
-t_map						parse_map(char *map_path);
-t_point						transform_point(t_cam *cam, t_point p);
-void						print_point(t_point p);
-//void						draw_line(t_data *data, t_point p1, t_point p2);
 
 #endif

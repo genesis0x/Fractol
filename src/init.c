@@ -6,69 +6,21 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:42:25 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/01/21 19:53:34 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/16 22:20:04 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "../inc/fractol.h"
 
 void	init_canvas(void *mlx, t_canvas *c)
 {
 	c->img = mlx_new_image(mlx, c->w, c->h);
-	// check if image is not NULL
 	c->addr = mlx_get_data_addr(c->img, &c->bpp, &c->line_len, &c->endian);
 }
 
-int	init_map(t_data *data)
+void	init(t_data *data)
 {
-	data->main.map_path = "maps/map.fdf";
-	data->main.map = parse_map(data->main.map_path);
-	if (data->main.map.coords)
-		return (0);
-	return (1);
-}
-
-int	init_cam_coords(t_data *data)
-{
-	t_cam	*cam;
-	t_map	*map;
-	size_t	x;
-
-	//t_point	p;
-	map = &data->main.map;
-	cam = &data->main.cam;
-	x = -1;
-	cam->coords = malloc(map->h * sizeof(t_point *));
-	if (cam->coords == NULL)
-		return (1);
-	while (++x < map->h)
-	{
-		cam->coords[x] = malloc(map->w * sizeof(t_point));
-		if (cam->coords[x] == NULL)
-		{
-			// free up to x and return (null);
-			return (1);
-		}
-	}
-	return (0);
-}
-
-void	init(t_data *data, int ac, char **av)
-{
-	(void)av;
-	(void)ac;
 	printf("init.\n");
-	if (init_map(data))
-	{
-		// map error;
-		exit(1);
-	}
-	if (init_cam_coords(data))
-	{
-		//free(map)
-		//printf("Allocation Failed\n");
-		exit(1);
-	}
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit(1);
@@ -80,8 +32,7 @@ void	init(t_data *data, int ac, char **av)
 	}
 	data->main.canvas.w = W;
 	data->main.canvas.h = H;
+	data->zoom = 1.0;
 	init_canvas(data->mlx, &data->main.canvas);
-	data->main.cam.tr = (t_point){.x = 2, .y = 1, .z = -2};
-	data->main.cam.ro = (t_point){.x = 0, .y =  M_PI_2, .z = 0};
 	printf("end init.\n");
 }
