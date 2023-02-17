@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:36:13 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:53:17 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,13 @@ enum
 };
 
 typedef struct s_data		t_data;
-typedef struct s_main		t_main;
 typedef struct s_canvas		t_canvas;
-typedef struct s_point		t_point;
 typedef struct s_complex	t_complex;
 
 struct						s_complex
 {
 	double					re;
 	double					im;
-};
-
-struct						s_point
-{
-	double					x;
-	double					y;
 };
 
 struct						s_canvas
@@ -68,16 +60,11 @@ struct						s_canvas
 	int						endian;
 };
 
-struct						s_main
-{
-	t_canvas				canvas;
-};
-
 struct						s_data
 {
 	void					*mlx;
 	void					*win;
-	t_main					main;
+	t_canvas				canvas;
 	double					ps;
 	double					zoom;
 	double					x_off;

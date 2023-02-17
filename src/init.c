@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:42:25 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:05:16 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:51:15 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	init(t_data *data)
 		free(data->mlx);
 		exit(1);
 	}
-	data->main.canvas.w = W;
-	data->main.canvas.h = H;
+	data->canvas.w = W;
+	data->canvas.h = H;
 	data->zoom = 1.0;
 	data->x_off = 0;
 	data->y_off = 0;
 	data->max_iter = 50;
-	init_canvas(data->mlx, &data->main.canvas);
+	init_canvas(data->mlx, &data->canvas);
 	printf("end init.\n");
 }
