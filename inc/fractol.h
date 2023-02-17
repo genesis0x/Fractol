@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 08:40:51 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:36:13 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,12 @@ struct						s_data
 	double					x_off;
 	double					y_off;
 	int						max_iter;
+	int						set;
 };
 
 int							calculate(t_complex c, t_complex z, int max_iter);
-void						mandelbrot(t_data *data);
-void						julia(t_data *data);
+void	mandelbrot(t_data *data);
+void	julia(t_data *data);
 void						init(t_data *data);
 void						init_canvas(void *mlx, t_canvas *c);
 int							key_handler(int key, t_data *data);
@@ -96,4 +97,5 @@ void						register_events(t_data *data);
 void						paint_pxl(t_canvas *canvas, int x, int y,
 								int color);
 void						check(t_data *data, int ac, char **av);
+void	set(t_data *data);
 #endif

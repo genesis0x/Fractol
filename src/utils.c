@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:20:19 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 08:42:25 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:36:50 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,12 @@ int	calculate(t_complex c, t_complex z, int max_iter)
 		z = tmp;
 	}
 	return (i);
+}
+
+void	set(t_data *data)
+{
+	if (data->set == 1)
+		julia(data);
+	if (data->set == 2)
+		mandelbrot(data);
 }
