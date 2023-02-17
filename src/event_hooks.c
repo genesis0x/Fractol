@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:58:23 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 05:13:50 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 05:23:54 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,17 @@ int	key_handler(int key, t_data *data)
 		init_canvas(data->mlx, &data->main.canvas);
 		mandelbrot(data);
 	}
-	// if (key == 125)
-	// {
-	// 	data->y_off += 10;
-	// 	init_canvas(data->mlx, &data->main.canvas);
-	// 	//julia(data);
-	// 	mandelbrot(data);
-	// }
-	// if (key == 126)
-	// {		
-	// 	data->y_off -= 10;
-	// 	init_canvas(data->mlx, &data->main.canvas);
-	// 	//julia(data);
-	// 	mandelbrot(data);
-	// }
 	return (0);
 }
 
-int mouse_hook(int key, int x, int y, t_data *data)
+int	mouse_hook(int key, int x, int y, t_data *data)
 {
-	//(void)data;
 	printf("Mouse key %d was pressed at (%d,%d)\n", key, x, y);
-    if (key == 1)
-    {
+	if (key == 1)
+	{
 		data->zoom *= 2;
-		//init_canvas(data->mlx, &data->main.canvas);
-		//init(data);
-		//mandelbrot(data);
-    }
-    return (0);
+	}
+	return (0);
 }
 
 int	close_window(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 04:45:48 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 05:28:41 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
-#include <string.h>
+# include <string.h>
 
 # define W 1500
 # define H 900
@@ -77,7 +77,7 @@ struct						s_data
 	void					*mlx;
 	void					*win;
 	t_main					main;
-	double					ps; // pixel_size
+	double					ps;
 	double					zoom;
 	int						x_off;
 	int						y_off;
@@ -94,5 +94,5 @@ int							close_window(t_data *data);
 void						register_events(t_data *data);
 void						paint_pxl(t_canvas *canvas, int x, int y,
 								int color);
-void    check(t_data *data, int ac, char **av);
+void						check(t_data *data, int ac, char **av);
 #endif

@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:20:19 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 01:41:36 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 05:27:46 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	calculate(t_complex c, t_complex z, int max_iter)
 	int			i;
 	t_complex	tmp;
 
-	for (i = 0; i < max_iter; i++)
+	i = -1;
+	while (++i < max_iter)
 	{
 		if (z.real * z.real + z.imag * z.imag > 4)
 			break ;
