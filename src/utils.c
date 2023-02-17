@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:20:19 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:36:50 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:18:39 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	calculate(t_complex c, t_complex z, int max_iter)
 	{
 		if (z.re * z.re + z.im * z.im > 4)
 			break ;
-		tmp = (t_complex){z.re * z.re - z.im * z.im + c.re, 2 * z.re
-			* z.im + c.im};
+		tmp = (t_complex){z.re * z.re - z.im * z.im + c.re, 2 * z.re * z.im
+			+ c.im};
 		z = tmp;
 	}
 	return (i);

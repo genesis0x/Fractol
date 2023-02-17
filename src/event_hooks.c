@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:58:23 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 10:14:02 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:25:58 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	key_handler(int key, t_data *data)
 		data->x_off = 0;
 		data->y_off = 0;
 		data->zoom = 1.0;
+		data->max_iter = 50;
 		set(data);
 	}
 	return (0);
@@ -51,15 +52,19 @@ int	mouse_hook(int key, int x, int y, t_data *data)
 	if (key == SCRL_UP)
 	{
 		data->zoom *= 2.0;
-		data->x_off -= (4.0 / (W * data->zoom) - 8.0 / (W * data->zoom)) * (x - W / 2);
-		data->y_off -= (4.0 / (W * data->zoom) - 8.0 / (W * data->zoom)) * (y - H / 2);
+		data->x_off -= (4.0 / (W * data->zoom) - 8.0 / (W * data->zoom)) * (x
+				- W / 2);
+		data->y_off -= (4.0 / (W * data->zoom) - 8.0 / (W * data->zoom)) * (y
+				- H / 2);
 		set(data);
 	}
 	if (key == SCRL_DOWN)
 	{
 		data->zoom /= 2.0;
-		data->x_off += (4.0 / (W * data->zoom) - 8.0 / (W * data->zoom)) * (x - W / 2);
-		data->y_off += (4.0 / (W * data->zoom) - 8.0 / (W * data->zoom)) * (y - H / 2);
+		data->x_off += (4.0 / (W * data->zoom) - 8.0 / (W * data->zoom)) \
+		* (x - W / 2);
+		data->y_off += (4.0 / (W * data->zoom) - 8.0 / (W * data->zoom)) \
+		* (y - H / 2);
 		set(data);
 	}
 	return (0);
