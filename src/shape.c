@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:19:56 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/16 23:47:50 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 01:29:16 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	julia(t_data *data)
 	int			iter;
 
 	int x, y;
-	max_iter = 500;
+	max_iter = 256;
 	c = (t_complex){.real = 0.355, .imag = 0.355};
 	for (y = 0; y < H; y++)
 	{
@@ -42,7 +42,7 @@ void	mandelbrot(t_data *data)
 	int			iter;
 
 	int x, y;
-	max_iter = 100;
+	max_iter = 256;
 	z = (t_complex){.real = 0, .imag = 0};
 	for (y = 0; y < H; y++)
 	{

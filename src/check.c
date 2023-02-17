@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 18:21:41 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 01:40:13 by hahadiou         ###   ########.fr       */
+/*   Created: 2023/02/17 01:30:49 by hahadiou          #+#    #+#             */
+/*   Updated: 2023/02/17 01:39:46 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int	main(int ac, char **av)
+void    check(t_data *data, int ac, char **av)
 {
-	t_data	data;
-
-	check(&data, ac, av);
-	register_events(&data);
-	mlx_loop(data.mlx);
+    if (ac != 2)
+    {
+        printf("Bad Usage\n");
+        exit(0);
+    }
+    if (!strcmp(av[1], "julia"))
+    {
+        init(data);
+        julia(data);
+    }
+    else if (!strcmp(av[1], "mandlebrot"))
+    {
+        init(data);
+        mandelbrot(data);
+    }
+    else
+    {
+        printf("Chof ach katktb Ya W9\n");
+        exit(1);
+    }
 }

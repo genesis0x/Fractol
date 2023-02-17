@@ -6,28 +6,28 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/16 23:05:35 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 01:36:02 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "libft.h"
 # include <math.h>
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
+#include <string.h>
 
-# define W 1200
-# define H 750
+# define W 1500
+# define H 900
 # define TITLE "Fractol"
 
 # define K_ESC 53
 # define K_A 0
 # define K_S 1
 # define K_D 2
-# define MAX_ITER 256
+
 enum
 {
 	ON_KEYDOWN = 2,
@@ -58,7 +58,6 @@ struct						s_point
 
 struct						s_canvas
 {
-	t_point					p;
 	unsigned int			w;
 	unsigned int			h;
 	void					*img;
@@ -71,8 +70,6 @@ struct						s_canvas
 struct						s_main
 {
 	t_canvas				canvas;
-	int						x_pos;
-	void					(*draw_on_screen)(t_data *);
 };
 
 struct						s_data
@@ -94,5 +91,5 @@ int							close_window(t_data *data);
 void						register_events(t_data *data);
 void						paint_pxl(t_canvas *canvas, int x, int y,
 								int color);
-
+void    check(t_data *data, int ac, char **av);
 #endif
