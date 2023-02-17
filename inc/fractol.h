@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:56:37 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:58:16 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define U 126
 # define D 125
 # define RES 15
+# define SCRL_UP 5
+# define SCRL_DOWN 4
 enum
 {
 	ON_KEYDOWN = 2,
