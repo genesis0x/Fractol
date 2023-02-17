@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:58:16 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:10:38 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <unistd.h>
 
 # define W 1500
-# define H 900
+# define H 1000
 # define TITLE "Fractol"
 
 # define ESC 53
@@ -32,6 +32,8 @@
 # define RES 15
 # define SCRL_UP 5
 # define SCRL_DOWN 4
+# define WK 13
+# define S 1
 enum
 {
 	ON_KEYDOWN = 2,

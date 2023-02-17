@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:58:23 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:58:34 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:14:02 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	key_handler(int key, t_data *data)
 		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
 	}
-	if (key == 34)
+	if (key == WK || key == S)
 	{
-		data->max_iter += 50;
+		data->max_iter += 5 * (key == WK) - 5 * (key == S);
 		set(data);
 	}
 	if (key == L || key == R)

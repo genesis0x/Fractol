@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:42:25 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:51:15 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:59:39 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_canvas(void *mlx, t_canvas *c)
 
 void	init(t_data *data)
 {
-	printf("init.\n");
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit(1);
@@ -39,5 +38,4 @@ void	init(t_data *data)
 	data->y_off = 0;
 	data->max_iter = 50;
 	init_canvas(data->mlx, &data->canvas);
-	printf("end init.\n");
 }

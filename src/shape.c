@@ -6,16 +6,18 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:19:56 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:52:31 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:08:01 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int get_color(int max_iter, int iter) {
+int get_color(int max_iter, int iter) 
+{
     if (iter == max_iter)
         return 0x000000; // Black for points in the set
-    else {
+    else 
+	{
         double t = (double)iter / (double)max_iter; // Interpolation factor
         int r = (int)(9 * (1 - t) * t * t * t * 255);
         int g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
