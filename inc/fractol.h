@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 01:36:02 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 04:45:48 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ struct						s_data
 	t_main					main;
 	double					ps; // pixel_size
 	double					zoom;
+	int						x_off;
+	int						y_off;
+	int						max_iter;
 };
 
 int							calculate(t_complex c, t_complex z, int max_iter);

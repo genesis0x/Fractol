@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:58:23 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 01:16:40 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 05:13:50 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,53 @@ int	key_handler(int key, t_data *data)
 		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
 	}
-	if (key == 126)
+	if (key == 34)
 	{
-		data->zoom *= 2.0;
-		julia(data);
-		//mandelbrot(data);
+		data->max_iter += 50;
+		init_canvas(data->mlx, &data->main.canvas);
+		mandelbrot(data);
 	}
-	if (key == 125)
+	if (key == 123)
 	{
-		data->zoom /= 2.0;
-		julia(data);
-		//mandelbrot(data);
+		data->x_off -= 10;
+		init_canvas(data->mlx, &data->main.canvas);
+		mandelbrot(data);
 	}
+	if (key == 124)
+	{
+		data->x_off += 10;
+		init_canvas(data->mlx, &data->main.canvas);
+		mandelbrot(data);
+	}
+	// if (key == 125)
+	// {
+	// 	data->y_off += 10;
+	// 	init_canvas(data->mlx, &data->main.canvas);
+	// 	//julia(data);
+	// 	mandelbrot(data);
+	// }
+	// if (key == 126)
+	// {		
+	// 	data->y_off -= 10;
+	// 	init_canvas(data->mlx, &data->main.canvas);
+	// 	//julia(data);
+	// 	mandelbrot(data);
+	// }
 	return (0);
 }
 
-int	mouse_hook(int key, t_data *data)
+int mouse_hook(int key, int x, int y, t_data *data)
 {
-	printf("key: %d\n", key);
-	if (key == 5)
-	{
-		data->zoom *= 2.0;
-		//julia(data);
-		mandelbrot(data);
-	}
-	if (key == 4)
-	{
-		data->zoom /= 2.0;
-		//julia(data);
-		mandelbrot(data);
-	}
-	return (0);
+	//(void)data;
+	printf("Mouse key %d was pressed at (%d,%d)\n", key, x, y);
+    if (key == 1)
+    {
+		data->zoom *= 2;
+		//init_canvas(data->mlx, &data->main.canvas);
+		//init(data);
+		//mandelbrot(data);
+    }
+    return (0);
 }
 
 int	close_window(t_data *data)
