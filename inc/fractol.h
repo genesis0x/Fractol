@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:53:17 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:56:37 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@
 # define H 900
 # define TITLE "Fractol"
 
-# define K_ESC 53
-# define K_A 0
-# define K_S 1
-# define K_D 2
-
+# define ESC 53
+# define L 123
+# define R 124
+# define U 126
+# define D 125
+# define RES 15
 enum
 {
 	ON_KEYDOWN = 2,

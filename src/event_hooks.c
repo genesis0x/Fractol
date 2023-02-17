@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:58:23 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:37:49 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:56:41 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_handler(int key, t_data *data)
 {
 	printf("key: %d\n", key);
-	if (key == K_ESC)
+	if (key == ESC)
 	{
 		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
@@ -25,17 +25,17 @@ int	key_handler(int key, t_data *data)
 		data->max_iter += 50;
 		set(data);
 	}
-	if (key == 123 || key == 124)
+	if (key == L || key == R)
 	{
-		data->x_off -= (0.2 / data->zoom) * (key == 124) - 0.1 / data->zoom;
+		data->x_off -= (0.2 / data->zoom) * (key == R) - 0.1 / data->zoom;
 		set(data);
 	}
-	if (key == 126 || key == 125)
+	if (key == U || key == D)
 	{
-		data->y_off += (0.2 / data->zoom) * (key == 126) - 0.1 / data->zoom;
+		data->y_off += (0.2 / data->zoom) * (key == U) - 0.1 / data->zoom;
 		set(data);
 	}
-	if (key == 15)
+	if (key == RES)
 	{
 		data->x_off = 0;
 		data->y_off = 0;
