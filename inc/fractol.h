@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 05:28:41 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/17 08:40:51 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
 
 # define W 1500
 # define H 900
@@ -46,8 +47,8 @@ typedef struct s_complex	t_complex;
 
 struct						s_complex
 {
-	double					real;
-	double					imag;
+	double					re;
+	double					im;
 };
 
 struct						s_point
@@ -79,8 +80,8 @@ struct						s_data
 	t_main					main;
 	double					ps;
 	double					zoom;
-	int						x_off;
-	int						y_off;
+	double					x_off;
+	double					y_off;
 	int						max_iter;
 };
 
