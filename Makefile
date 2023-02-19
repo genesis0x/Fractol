@@ -6,7 +6,7 @@
 #    By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 11:14:53 by hahadiou          #+#    #+#              #
-#    Updated: 2023/02/17 10:05:32 by hahadiou         ###   ########.fr        #
+#    Updated: 2023/02/19 23:29:21 by hahadiou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ OBJ_PATH	= obj
 
 SRCS =  init.c \
 		event_hooks.c \
+		mouse_hooks.c \
 		main.c \
 		shape.c \
 		utils.c \
@@ -46,7 +47,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "$(YELLOW)Compiling Fractol...$(NOC)"
-	@$(CC) $(FLAGS)  -lmlx -framework OpenGL -framework AppKit -o $@ $^ 
+	@$(CC)  $(FLAGS) -lmlx -framework OpenGL -framework AppKit -o $@ $^ 
 	@echo "$(GREEN)$@$(NOC)"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)/$(NAME).h

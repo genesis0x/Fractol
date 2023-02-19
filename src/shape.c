@@ -6,40 +6,19 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:19:56 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 10:20:22 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:33:15 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int	get_color(int max_iter, int iter)
-{
-	int		r;
-	int		g;
-	int		b;
-	double	t;
-
-	if (iter == max_iter)
-		return (0x000000);
-	else
-	{
-		t = (double)iter / (double)max_iter;
-		r = (int)(9 * (1 - t) * t * t * t * 255);
-		g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-		b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-		return ((r << 16) | (g << 8) | b);
-	}
-}
-
 void	julia(t_data *data)
 {
-	t_complex	c;
 	t_complex	z;
 	int			iter;
 	int			x;
 	int			y;
 
-	c = (t_complex){.re = 0.355, .im = 0.355};
 	y = -1;
 	while (++y < H)
 	{
@@ -48,8 +27,8 @@ void	julia(t_data *data)
 		{
 			z.re = x * 4.0 / (W * data->zoom) - 2.0 / data->zoom + data->x_off;
 			z.im = (y - H / 2.0) * 4.0 / (W * data->zoom) + data->y_off;
-			iter = calculate(c, z, data->max_iter);
-			paint_pxl(&data->canvas, x, y, get_color(data->max_iter, iter));
+			iter = calculate(data->c, z, data->max_iter, 0);
+			paint_pxl(&data->canvas, x, y, get_color(data, iter, 0));
 		}
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->canvas.img, 0, 0);
@@ -57,21 +36,49 @@ void	julia(t_data *data)
 
 void	mandelbrot(t_data *data)
 {
-	t_complex	c;
-	int			iter;
-	int			x;
-	int			y;
+	t_complex		c;
+	int				iter;
+	unsigned int	x;
+	unsigned int	y;
 
 	y = -1;
-	while (++y < H)
+	while (++y < data->canvas.h)
 	{
 		x = -1;
-		while (++x < W)
+		while (++x < data->canvas.w)
 		{
 			c.re = x * 4.0 / (W * data->zoom) - 2.0 / data->zoom + data->x_off;
 			c.im = (y - H / 2.0) * 4.0 / (W * data->zoom) + data->y_off;
-			iter = calculate(c, (t_complex){.re = 0, .im = 0}, data->max_iter);
-			paint_pxl(&data->canvas, x, y, get_color(data->max_iter, iter));
+			iter = calculate(c, (t_complex){.re = 0, .im = 0}, \
+					data->max_iter, 0);
+			data->color = get_color(data, iter, 0);
+			paint_pxl(&data->canvas, x + data->x_off, y + data->y_off, \
+					data->color);
+		}
+	}
+	mlx_put_image_to_window(data->mlx, data->win, data->canvas.img, 0, 0);
+}
+
+void	burning_ship(t_data *data)
+{
+	t_complex		c;
+	int				iter;
+	unsigned int	x;
+	unsigned int	y;
+
+	y = -1;
+	while (++y < data->canvas.h)
+	{
+		x = -1;
+		while (++x < data->canvas.w)
+		{
+			c.re = x * 4.0 / (W * data->zoom) - 2.0 / data->zoom + data->x_off;
+			c.im = (y - H / 2.0) * 4.0 / (W * data->zoom) + data->y_off;
+			iter = calculate(c, (t_complex){.re = 0, .im = 0}, data->max_iter,
+					1);
+			data->color = get_color(data, iter, 0);
+			paint_pxl(&data->canvas, x + data->x_off, y + data->y_off, \
+					data->color);
 		}
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->canvas.img, 0, 0);

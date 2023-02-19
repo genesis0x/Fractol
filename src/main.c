@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:21:41 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/17 09:33:56 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:30:29 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int	main(int ac, char **av)
 
 	check(&data, ac, av);
 	register_events(&data);
+	register_mouse_hook(&data);
 	mlx_loop(data.mlx);
 }
