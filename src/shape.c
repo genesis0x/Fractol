@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:19:56 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/19 23:33:15 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/23 01:33:25 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	julia(t_data *data)
 	int			iter;
 	int			x;
 	int			y;
+	int hue;
 
 	y = -1;
 	while (++y < H)
@@ -28,7 +29,13 @@ void	julia(t_data *data)
 			z.re = x * 4.0 / (W * data->zoom) - 2.0 / data->zoom + data->x_off;
 			z.im = (y - H / 2.0) * 4.0 / (W * data->zoom) + data->y_off;
 			iter = calculate(data->c, z, data->max_iter, 0);
-			paint_pxl(&data->canvas, x, y, get_color(data, iter, 0));
+			if (iter == data->max_iter)
+				paint_pxl(&data->canvas, x, y, 0x000000);
+			else
+			{
+				hue = iter * iter % 360;
+				paint_pxl(&data->canvas, x, y, hsv_to_rgb(hue, 1, 1, 0));
+			}
 		}
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->canvas.img, 0, 0);
@@ -40,6 +47,7 @@ void	mandelbrot(t_data *data)
 	int				iter;
 	unsigned int	x;
 	unsigned int	y;
+	int hue;
 
 	y = -1;
 	while (++y < data->canvas.h)
@@ -51,9 +59,14 @@ void	mandelbrot(t_data *data)
 			c.im = (y - H / 2.0) * 4.0 / (W * data->zoom) + data->y_off;
 			iter = calculate(c, (t_complex){.re = 0, .im = 0}, \
 					data->max_iter, 0);
-			data->color = get_color(data, iter, 0);
-			paint_pxl(&data->canvas, x + data->x_off, y + data->y_off, \
-					data->color);
+			if (iter == data->max_iter)
+				paint_pxl(&data->canvas, x, y, 0x000000);
+			else
+			{
+				hue = iter * iter % 360;
+				data->color = hsv_to_rgb(hue, 1, 1, 0);
+				paint_pxl(&data->canvas, x, y, data->color);
+			}
 		}
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->canvas.img, 0, 0);
@@ -65,6 +78,7 @@ void	burning_ship(t_data *data)
 	int				iter;
 	unsigned int	x;
 	unsigned int	y;
+	int hue;
 
 	y = -1;
 	while (++y < data->canvas.h)
@@ -76,9 +90,14 @@ void	burning_ship(t_data *data)
 			c.im = (y - H / 2.0) * 4.0 / (W * data->zoom) + data->y_off;
 			iter = calculate(c, (t_complex){.re = 0, .im = 0}, data->max_iter,
 					1);
-			data->color = get_color(data, iter, 0);
-			paint_pxl(&data->canvas, x + data->x_off, y + data->y_off, \
-					data->color);
+			if (iter == data->max_iter)
+				paint_pxl(&data->canvas, x, y, 0x000000);
+			else
+			{
+				hue = iter * iter % 360;
+				data->color = hsv_to_rgb(hue, 1, 1, 0);
+				paint_pxl(&data->canvas, x, y, data->color);
+			}
 		}
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->canvas.img, 0, 0);

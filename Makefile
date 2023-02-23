@@ -6,7 +6,7 @@
 #    By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 11:14:53 by hahadiou          #+#    #+#              #
-#    Updated: 2023/02/19 23:29:21 by hahadiou         ###   ########.fr        #
+#    Updated: 2023/02/23 01:19:25 by hahadiou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS =  init.c \
 		main.c \
 		shape.c \
 		utils.c \
-		check.c
+		check.c \
+		man.c
 		
 SRC		= $(addprefix $(SRC_PATH)/,$(SRCS))
 OBJ		= $(addprefix $(OBJ_PATH)/,$(SRCS:.c=.o))

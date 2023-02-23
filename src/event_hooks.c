@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:58:23 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/19 23:28:01 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/23 01:26:01 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	key_handler(int key, t_data *data)
 
 int	loop_hook(t_data *data)
 {
-	get_color(0, 0, SHIFT_COLOR);
+	hsv_to_rgb(0, 1, 1, 1);
 	set_fractal(data);
 	return (0);
 }
@@ -61,8 +61,10 @@ int	close_window(t_data *data)
 	exit(0);
 }
 
-void	register_events(t_data *data)
+void	register_events(t_data *data, int b)
 {
+	if (b)
+		mlx_loop_hook(data->mlx, loop_hook, data);
 	mlx_hook(data->win, ON_KEYDOWN, 0, key_handler, data);
 	mlx_mouse_hook(data->win, mouse_hook, data);
 	mlx_hook(data->win, ON_DESTROY, 0, close_window, data);

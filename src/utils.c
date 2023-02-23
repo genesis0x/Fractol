@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:20:19 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/19 23:33:42 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/23 01:28:24 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,57 @@ void	set_fractal(t_data *data)
 		burning_ship(data);
 }
 
-int	get_color(t_data *data, int iter, int shift)
+int hsv_to_rgb(float h, float s, float v, int shift)
 {
-	int			r;
-	int			g;
-	int			b;
-	double		t;
+    float c = v * s;
+    float x = c * (1.0 - fabs(fmod((double)h / 60.0, 2.0) - 1.0));
+    float m = v - c;
+    float r, g, b;
 	static int	shift_color;
 
 	if (shift)
 	{
-		shift_color += 8;
+		shift_color += 4;
 		return (0);
 	}
-	if (iter == data->max_iter)
-		return (0x000000);
-	else
-	{
-		t = (double)iter / (double)data->max_iter;
-		r = (int)(9 * (1 - t) * t * t * t * 255) + shift_color;
-		g = (int)(15 * (1 - t) * (1 - t) * t * t * 255) + shift_color;
-		b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255) + shift_color;
-		return ((r << 16) | (g << 8) | b);
-	}
+    if (h >= 0 && h < 60)
+    {
+        r = c;
+        g = x;
+        b = 0;
+    }
+    else if (h >= 60 && h < 120)
+    {
+        r = x;
+        g = c;
+        b = 0;
+    }
+    else if (h >= 120 && h < 180)
+    {
+        r = 0;
+        g = c;
+        b = x;
+    }
+    else if (h >= 180 && h < 240)
+    {
+        r = 0;
+        g = x;
+        b = c;
+    }
+    else if (h >= 240 && h < 300)
+    {
+        r = x;
+        g = 0;
+        b = c;
+    }
+    else
+    {
+        r = c;
+        g = 0;
+        b = x;
+    }
+    int red = (int)((r + m) * 255.0f) + shift_color;
+    int green = (int)((g + m) * 255.0f) + shift_color;
+    int blue = (int)((b + m) * 255.0f) + shift_color;
+    return (red << 16) | (green << 8) | blue;
 }

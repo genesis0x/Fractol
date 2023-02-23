@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/19 23:28:22 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/23 01:22:54 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,20 @@ struct						s_data
 int							calculate(t_complex c, t_complex z, int max_iter,
 								int b);
 void						mandelbrot(t_data *data);
-void						register_events(t_data *data);
+void						register_events(t_data *data, int b);
 void						burning_ship(t_data *data);
 void						julia(t_data *data);
 void						init(t_data *data);
 void						init_canvas(void *mlx, t_canvas *c);
 int							key_handler(int key, t_data *data);
 int							close_window(t_data *data);
-void						register_events(t_data *data);
 void						paint_pxl(t_canvas *c, int x, int y, int color);
 void						check(t_data *data, int ac, char **av);
 void						set_fractal(t_data *data);
 int							get_color(t_data *data, int iter, int shift);
 int							mouse_hook(int key, int x, int y, t_data *data);
 void						register_mouse_hook(t_data *data);
+int hsv_to_rgb(float h, float s, float v, int shift);
+void    man(int i);
 
 #endif
