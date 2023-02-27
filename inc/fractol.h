@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 14:25:35 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/23 01:22:54 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/26 20:34:45 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ int							mouse_hook(int key, int x, int y, t_data *data);
 void						register_mouse_hook(t_data *data);
 int hsv_to_rgb(float h, float s, float v, int shift);
 void    man(int i);
+int	ft_strcmp(char *s1, char *s2);
 
 #endif

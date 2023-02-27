@@ -6,17 +6,21 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 01:16:56 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/23 01:22:41 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:21:20 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-void    man(int i)
+void	man(int i)
 {
-    if (!i)
-        printf("Usage: ./fractol [mandelbrot] | [julia] | [burning_ship]");
-    else
-        printf("Please selecet one of this sets: [mandelbrot] | [julia] | [burning_ship]");
-    exit(1);
+	if (!i)
+		write(1, "Usage: ./fractol [madelbrot] | [julia] | [burnin_ship]\n",
+				55);
+	else
+	{
+		write(1, "write one of this sets: ", 24);
+		write(1, "[mandelbrot] | [julia] | [burning_ship]\n", 40);
+	}
+	exit(1);
 }

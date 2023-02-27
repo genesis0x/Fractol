@@ -6,7 +6,7 @@
 /*   By: hahadiou <hahadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:42:25 by hahadiou          #+#    #+#             */
-/*   Updated: 2023/02/23 01:26:30 by hahadiou         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:51:19 by hahadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init(t_data *data)
 	data->win = mlx_new_window(data->mlx, W, H, TITLE);
 	if (!data->win)
 	{
-		free(data->mlx);
+		//free(data->mlx);
 		exit(1);
 	}
 	data->canvas.w = W;
@@ -36,7 +36,7 @@ void	init(t_data *data)
 	data->zoom = 1.0;
 	data->x_off = 0;
 	data->y_off = 0;
-	data->max_iter = 150;
+	data->max_iter = 50;
 	data->c.re = 0.355;
 	data->c.im = 0.355;
 	init_canvas(data->mlx, &data->canvas);
